@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Halal Chicken Kitoro HQ | Entebbe &amp; Kampala</title>
+<meta name="description" content="Halal broilers, local chicken, eggs and chicks. Headquarters at Kitoro, Entebbe, with delivery to Entebbe and Kampala. Order on WhatsApp, pay with MTN MoMo or Airtel Money.">
+<meta name="theme-color" content="#062e1d">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="toast" class="toast"></div>
+<div class="floating-order">
+<button class="floating-btn" style="background:#25D366" onclick="openWhatsApp()" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></button>
+<button class="floating-btn btn-order" onclick="showPage('contact')" aria-label="My order"><i class="fa-solid fa-cart-shopping"></i><span id="cartCount" class="badge"></span></button>
+</div>
+
+<div id="paymentModal" class="payment-modal">
+<div class="payment-card">
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><h3 style="color:var(--emerald)">Pay with MoMo</h3><button onclick="closePayment()" style="background:#f1f5f9;border:none;width:32px;height:32px;border-radius:100px" aria-label="Close"><i class="fa-solid fa-xmark"></i></button></div>
+<div class="momo-box"><b>MTN MoMo: <span data-phone></span></b><br><small>Dial *165# → Send Money → <span data-phone></span> → Amount → PIN → send the screenshot on WhatsApp</small><br><button class="btn btn-mtn" style="width:100%;margin-top:10px" onclick="payMTN()">Pay MTN MoMo</button></div>
+<div class="momo-box" style="border-color:#ff0000"><b>Airtel Money <span data-airtel></span></b><br><small>Dial *185# → Send Money</small><br><button class="btn" style="width:100%;margin-top:10px;background:#ff0000;color:#fff" onclick="payAirtel()">Pay Airtel Money</button></div>
+</div>
+</div>
+
+<nav>
+<div class="nav-top">
+<div style="display:flex;align-items:center;gap:10px"><div class="logo-amazing"><i class="fa-solid fa-crow"></i></div><div><b>HALAL CHICKEN</b><br><small>KITORO HQ • MoMo PAY</small></div></div>
+<div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><select id="lang" class="lang" onchange="setLang(this.value)" aria-label="Language"><option value="en">English</option><option value="sw">Kiswahili</option><option value="lg">Luganda</option></select><button class="btn btn-order" onclick="showPage('contact')"><i class="fa-solid fa-bag-shopping"></i> MAKE ORDER</button><button class="btn btn-mtn" onclick="openPayment()"><i class="fa-solid fa-money-bill"></i> PAY MoMo</button></div>
+</div>
+<div class="menu">
+<a onclick="showPage('home')" id="m-home" class="active"><i class="fa-solid fa-house"></i> Home</a>
+<a onclick="showPage('about')" id="m-about"><i class="fa-solid fa-circle-info"></i> About Us</a>
+<a onclick="showPage('products')" id="m-products"><i class="fa-solid fa-drumstick-bite"></i> Chickens</a>
+<a onclick="showPage('business')" id="m-business"><i class="fa-solid fa-utensils"></i> Hotels &amp; Restaurants</a>
+<a onclick="showPage('eggs')" id="m-eggs"><i class="fa-solid fa-egg"></i> Eggs</a>
+<a onclick="showPage('chicks')" id="m-chicks"><i class="fa-solid fa-kiwi-bird"></i> Chicks</a>
+<a onclick="showPage('stations')" id="m-stations"><i class="fa-solid fa-map-location"></i> Stations</a>
+<a onclick="showPage('delivery')" id="m-delivery"><i class="fa-solid fa-truck-fast"></i> Delivery &amp; FAQ</a>
+<a onclick="showPage('contact')" id="m-contact" class="contacts-highlight"><i class="fa-solid fa-address-book"></i> Contacts</a>
+</div>
+</nav>
+
+<!-- HOME -->
+<div id="home" class="page active">
+<div class="hero">
+<div>
+<div style="display:inline-flex;align-items:center;gap:6px;background:#fff;border:1.5px solid #e2e8f0;padding:8px 14px;border-radius:100px;font-size:11px;font-weight:900;color:var(--green)"><i class="fa-solid fa-crown" style="color:var(--gold)"></i> KITORO HQ • 9 STATIONS • ENTEBBE &amp; KAMPALA</div>
+<div><span data-open></span></div>
+<h1>Premium Halal Chicken<br>That Families <i>Trust.</i></h1>
+<p>We supply broilers, local chicken, layers, exotic and local eggs (tray of 30) and young chicks. Kitoro Branch is our headquarters. Local chicken is UGX <span data-range="local"></span>; other types are UGX <span data-range="other"></span>.</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px"><button class="btn btn-order" onclick="showPage('products')" style="padding:14px 24px"><i class="fa-solid fa-drumstick-bite"></i> SEE CHICKENS</button><button class="btn btn-mtn" onclick="openPayment()">PAY MoMo</button></div>
+</div>
+<div><div style="border-radius:28px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,0.18);border:8px solid #fff" id="heroPhoto"></div></div>
+</div>
+
+<div class="content-box">
+<h3 style="color:var(--emerald);font-size:26px"><i class="fa-solid fa-star" style="color:var(--gold)"></i> Why Families Choose Us</h3>
+<p style="margin:12px 0">We started small in Katabi, Entebbe, and today we have 9 stations. Every bird is slaughtered halal with Bismillah, the blood is fully drained, birds are cleaned with clean water, packed in cooler boxes and delivered fast.</p>
+<div class="grid3">
+<div id="trustCard1" style="background:#f0fdf4;padding:14px;border-radius:14px;border:1px solid #bbf7d0"><b>100% Halal</b><br><small>Halal slaughter, clean handling, cooler-box packing.</small></div>
+<div style="background:#fffbeb;padding:14px;border-radius:14px;border:1px solid #fde68a"><b>2 Hours Delivery</b><br><small>Entebbe 5k, Kampala 10-15k, boda with cooler box.</small></div>
+<div style="background:#fefce8;padding:14px;border-radius:14px;border:1px solid #fde68a"><b>MoMo Pay</b><br><small>MTN MoMo, Airtel Money, Cash on Delivery.</small></div>
+</div>
+<div id="certs" style="margin-top:16px;display:none"></div>
+</div>
+
+<div class="content-box">
+<h3 style="color:var(--emerald);font-size:24px">See Our Birds &amp; Farm</h3>
+<div id="videoSlot" style="margin:12px 0"></div>
+<div class="gallery" id="gallery"></div>
+</div>
+
+<div class="content-box" id="reviewsBox" style="display:none">
+<h3 style="color:var(--emerald);font-size:24px">What Customers Say</h3>
+<div class="grid3" id="reviewList"></div>
+</div>
+
+<div class="content-box" style="text-align:center">
+<h3 style="color:var(--emerald);font-size:24px">Bought from us before?</h3>
+<p style="margin:10px 0">Tell us how it went. Your feedback helps other families.</p>
+<button class="btn btn-primary" onclick="openWhatsApp('Hello! I want to share feedback about my order: ')"><i class="fa-brands fa-whatsapp"></i> SEND FEEDBACK</button>
+</div>
+</div>
+
+<!-- ABOUT -->
+<div id="about" class="page">
+<div style="max-width:950px;margin:0 auto">
+<h2 style="font-size:42px;color:var(--emerald);text-align:center">About Halal Chicken Entebbe - Kitoro HQ</h2>
+<div class="content-box">
+<h3 style="color:var(--emerald);font-size:24px">Our Story</h3>
+<!-- OWNER: please confirm every year and figure in this story before launch. -->
+<p><b>2020 - Katabi:</b> We started small in Katabi, Entebbe, with 20 broilers, selling to neighbours and a WhatsApp group. We learned halal slaughter from an elder.</p>
+<p><b>2021 - Professional cleaning and packing:</b> We began proper cleaning, packing and trading under licence.</p>
+<p><b>2022 - More stations and eggs:</b> We added Nkumba, Kajjansi and Zzana, started selling eggs (exotic and local) and added layers.</p>
+<p><b>2023 - Chicks for rearing:</b> We started selling exotic day-old chicks and hardened one-month local chicks, helping young people start poultry farms.</p>
+<p><b>2024 - Kitoro becomes HQ:</b> Kitoro, central and near the market opposite the mosque, became our headquarters and we grew to 9 stations.</p>
+<p><b>2025 onwards - Easier ordering:</b> MoMo payment, WhatsApp ordering and live maps for every station.</p>
+</div>
+<div class="content-box">
+<h3 style="color:var(--emerald);font-size:24px">Mission, Vision &amp; Values</h3>
+<p><b>Mission:</b> Provide 100% halal, clean, affordable chicken, eggs and chicks to Entebbe and Kampala with fast delivery and free farming advice.</p>
+<p><b>Vision:</b> To be the halal chicken family Uganda trusts, known for Kitoro HQ, quality, halal integrity and helping young farmers.</p>
+<p><b>Values:</b> Halal integrity, cleanliness, fair pricing, honesty, community.</p>
+</div>
+</div>
+</div>
+
+<!-- CHICKENS (rendered from PRODUCTS in the script) -->
+<div id="products" class="page">
+<h2 style="font-size:40px;color:var(--emerald);text-align:center">Fresh Chickens</h2>
+<p style="text-align:center;color:#64748b;margin:10px 0 8px">Local chicken UGX <span data-range="local"></span> • Other types UGX <span data-range="other"></span></p>
+<div style="text-align:center;margin-bottom:20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn btn-order" onclick="showPage('contact')"><i class="fa-solid fa-bag-shopping"></i> MAKE ORDER</button><button class="btn btn-mtn" onclick="openPayment()">PAY MoMo</button></div>
+<div id="productList"></div>
+</div>
+
+<!-- EGGS -->
+<div id="eggs" class="page">
+<h2 style="font-size:40px;color:var(--emerald);text-align:center">Fresh Eggs - Tray of 30</h2>
+<p style="text-align:center;color:#64748b;margin:10px 0 20px">Minimum 1 tray = 30 eggs</p>
+<div class="grid2" style="grid-template-columns:1fr 1fr;max-width:900px;margin:0 auto 24px">
+<div class="p-card"><div data-photo="eggs-exotic" data-alt="Exotic eggs" data-h="200"></div><div class="p-card-body"><div class="p-price">UGX 12,000 / Tray</div><h3>Exotic Eggs - For Business</h3><p style="font-size:13px">ISA Brown, daily laying, medium size, good for cakes and chapati. 1 tray = 30 eggs minimum. Bulk discount available.</p><br><button class="btn btn-order" style="width:100%" onclick="addToCart('Exotic Eggs (tray of 30)',12000)">ADD TO ORDER</button></div></div>
+<div class="p-card"><div data-photo="eggs-local" data-alt="Local eggs" data-h="200"></div><div class="p-card-body"><div class="p-price local">UGX 22,000 / Tray</div><h3>Local Eggs (Kienyeji)</h3><p style="font-size:13px">A local hen lays about 1 egg every 2 days, compared with daily for exotic layers, so the price is higher. Natural feed, deep yellow yolk.</p><br><button class="btn btn-gold" style="width:100%" onclick="addToCart('Local Eggs (tray of 30)',22000)">ADD TO ORDER</button></div></div>
+</div>
+<div class="content-box" style="max-width:900px;margin:20px auto">
+<h3 style="color:var(--emerald);font-size:22px">Egg Tips</h3>
+<p><b>Exotic eggs:</b> Good for the chapati and cake business. For chapati rolex, beat 2 eggs with salt, chopped onions and tomatoes and fry for 2 minutes. Store the tray in a cool place and use within 2 weeks.</p>
+<p><b>Local eggs:</b> Popular for children and pregnant mothers. Boil for 10 minutes, or fry with tomatoes and onions for 3 minutes.</p>
+<p><b>Freshness check:</b> Put an egg in water. If it sinks flat it is very fresh; if it sinks and stands up it is about a week old; if it floats, do not use it.</p>
+</div>
+</div>
+
+<!-- CHICKS -->
+<div id="chicks" class="page">
+<h2 style="font-size:40px;color:var(--emerald);text-align:center">Young Chicks For Rearing</h2>
+<p style="text-align:center;color:#64748b;margin:10px 0 20px">Exotic day-old UGX 3,500 (minimum 50) • Local 1 month UGX 9,000 (minimum 10)</p>
+<div class="stations" style="max-width:1000px;margin:0 auto">
+<div class="station" style="padding:22px"><h3>Exotic Chicks - Fast Growing - UGX 3,500</h3><p style="font-size:13px;color:#64748b">Day-old chicks, vaccinated, with a free guide book and advice on housing, feeds and vaccines. Minimum order 50 chicks. Delivery to Entebbe free, Kampala 10k. Needs a brooder with heat.</p><br><button class="btn btn-order" style="width:100%" onclick="addToCart('Exotic Chicks day-old (each)',3500,50)">ADD TO ORDER - Exotic 3,500</button></div>
+<div class="station" style="padding:22px;border:3px solid var(--gold)"><h3>Local Chicks (Kienyeji) 1 Month - UGX 9,000</h3><p style="font-size:13px;color:#64748b">One month old and already hardened, so no brooder heat is needed, which saves charcoal or electricity. Free-range, disease resistant. Minimum order 10 chicks. Delivery to Entebbe free, Kampala 10k.</p><br><button class="btn btn-gold" style="width:100%" onclick="addToCart('Local Chicks 1 month (each)',9000,10)">ADD TO ORDER - Local 1 Month 9k</button></div>
+</div>
+<div class="content-box" style="max-width:1000px;margin:20px auto">
+<h3 style="color:var(--emerald);font-size:22px">How to Rear Chicks</h3>
+<p><b>Housing:</b> Keep chicks in a dry house with no wind, about 3x3 ft for 50 chicks, with wood shavings about 2 inches thick, cleaned daily. Exotic day-old chicks need a 100W bulb at about 32°C in week one, reduced by about 2°C each week. Hardened local chicks need no heat.</p>
+<p><b>Feeds:</b> Exotic chicks: starter feed for weeks 0-2, grower for weeks 2-5, finisher after week 5. Local chicks: starter until 4 weeks, grower until 8 weeks, then free-range with maize, greens and mukene. Always give clean water; vitamins in the first 5 days and glucose on day one.</p>
+<p><b>Vaccines:</b> Follow the schedule in the guide book that comes with your chicks (Marek, Newcastle, Gumboro). Ask us on WhatsApp for advice at any time.</p>
+<p><b>Which to choose:</b> For fast meat (about 5 weeks) choose exotic broiler chicks. For daily eggs choose exotic layer chicks. For a strong, low-cost free-range flock with no brooder, choose local one-month chicks.</p>
+</div>
+</div>
+
+<!-- RESTAURANTS & HOTELS -->
+<div id="business" class="page">
+<div style="max-width:1000px;margin:0 auto">
+<div style="background:linear-gradient(135deg,var(--emerald),#0a5c36);color:#fff;padding:26px;border-radius:24px;margin-bottom:20px">
+<h2 style="font-size:36px;color:#fff">Restaurants, Hotels &amp; Events</h2>
+<p style="color:#a7f3d0;margin-top:10px">Buying in numbers? Bigger orders earn a bonus discount, and regular customers can set up a standing weekly or monthly order.</p>
+</div>
+<div class="content-box">
+<h3 style="color:var(--emerald);font-size:24px">Bulk Bonus</h3>
+<p style="margin-top:8px">The more birds in one order, the bigger the discount. It is applied automatically on chicken items when you build your order on the Contacts page.</p>
+<div class="grid3" id="tierList"></div>
+<button class="btn btn-order" style="margin-top:16px" onclick="showPage('products')"><i class="fa-solid fa-drumstick-bite"></i> START AN ORDER</button>
+</div>
+<div class="content-box">
+<h3 style="color:var(--emerald);font-size:24px">Price List (per bird)</h3>
+<div class="tbl-wrap"><table class="tbl" id="priceTable"></table></div>
+<p style="margin-top:10px"><small>Prices in UGX. Eggs and chicks keep their own minimum orders. Delivery fee is extra.</small></p>
+</div>
+<div class="content-box">
+<h3 style="color:var(--emerald);font-size:24px">Standing Orders (weekly or monthly)</h3>
+<p style="margin:8px 0 14px">Tell us what you need and how often. We confirm the plan with you on WhatsApp.</p>
+<input id="sbiz" class="field" placeholder="Business name (restaurant, hotel, caterer)">
+<input id="sperson" class="field" placeholder="Contact person" autocomplete="name">
+<input id="sphone" class="field" placeholder="Phone - e.g 07XXXXXXXX" type="tel" autocomplete="tel">
+<input id="sloc" class="field" placeholder="Delivery location">
+<textarea id="sitems" class="field" rows="3" placeholder="What you need each time - e.g 20 medium broilers, 10 trays of eggs"></textarea>
+<select id="sfreq" class="field"><option>Every week</option><option>Twice a week</option><option>Every 2 weeks</option><option>Every month</option></select>
+<input id="sdays" class="field" placeholder="Preferred days and time - e.g Mondays and Fridays, 7am">
+<button class="btn btn-order" style="width:100%;justify-content:center;padding:14px" onclick="sendStanding()">SEND STANDING ORDER REQUEST</button>
+<p style="margin-top:8px"><small>By sending, you agree to our <a href="#legal" onclick="showPage('legal');return false">Terms &amp; Privacy</a>.</small></p>
+</div>
+</div>
+</div>
+
+<!-- DELIVERY & FAQ -->
+<div id="delivery" class="page">
+<div style="max-width:1000px;margin:0 auto">
+<h2 style="font-size:40px;color:var(--emerald);text-align:center">Delivery, Hours &amp; FAQ</h2>
+<div class="content-box">
+<h3 style="color:var(--emerald);font-size:24px">Delivery Fees by Area</h3>
+<div class="tbl-wrap"><table class="tbl" id="deliveryTable"></table></div>
+<p style="margin-top:10px"><small id="deliveryNote"></small></p>
+</div>
+<div class="content-box">
+<h3 style="color:var(--emerald);font-size:24px">Opening Hours</h3>
+<p><span class="open-pill" data-open></span></p>
+<div class="tbl-wrap"><table class="tbl" id="hoursTable"></table></div>
+</div>
+<div class="content-box">
+<h3 style="color:var(--emerald);font-size:24px">Frequently Asked Questions</h3>
+<details class="faq"><summary>How do I order?</summary><p>Tap ADD TO ORDER on any product, then open Contacts, enter your name, phone and location, and send. Your order opens in WhatsApp and we confirm with you.</p></details>
+<details class="faq"><summary>Can I order more than one item?</summary><p>Yes. Add as many items as you like. They go in one order with one total.</p></details>
+<details class="faq"><summary>How do I pay?</summary><p>MTN MoMo, Airtel Money or cash on delivery. For MoMo, send the money to the number shown on the Contacts page, then send us the screenshot on WhatsApp.</p></details>
+<details class="faq"><summary>Is the chicken halal?</summary><p>Yes. Every bird is slaughtered the halal way with Bismillah and the blood is fully drained. Certificate details are shown on the home page when available.</p></details>
+<details class="faq"><summary>How fast is delivery?</summary><p>Delivery times depend on your area. See the table above. Birds are packed in cooler boxes.</p></details>
+<details class="faq"><summary>What is the minimum order for eggs and chicks?</summary><p>Eggs are sold by the tray of 30. Exotic chicks have a minimum of 50 and local one-month chicks a minimum of 10.</p></details>
+<details class="faq"><summary>Do you give discounts for big orders?</summary><p>Yes. See Hotels &amp; Restaurants for the bulk bonus and standing orders.</p></details>
+<details class="faq"><summary>How should I store fresh chicken?</summary><p>Keep it cold. Cook within a day or two, or freeze it right away. Do not refreeze after thawing.</p></details>
+<details class="faq"><summary>Something is wrong with my order. What do I do?</summary><p>Message us on WhatsApp as soon as you receive it, with a photo if possible, and we will work to put it right.</p></details>
+</div>
+</div>
+</div>
+
+<!-- TERMS & PRIVACY -->
+<div id="legal" class="page">
+<div style="max-width:850px;margin:0 auto">
+<h2 style="font-size:40px;color:var(--emerald);text-align:center">Terms &amp; Privacy</h2>
+<div class="content-box legal">
+<h3>Terms of Sale</h3>
+<p><b>Orders.</b> Orders are placed through WhatsApp using the order form or product buttons. An order is confirmed only after we reply to you.</p>
+<p><b>Prices.</b> Prices are in Uganda shillings and may change. The price confirmed on WhatsApp applies. Delivery fees are extra and depend on your area.</p>
+<p><b>Payment.</b> You may pay by MTN MoMo, Airtel Money or cash on delivery. For mobile money, send the payment screenshot on WhatsApp.</p>
+<p><b>Freshness and problems.</b> Birds are prepared fresh. If there is a problem, contact us on WhatsApp as soon as you receive your order.</p>
+<p><b>Cancellations.</b> Please tell us as early as possible. Birds already prepared for you may not be cancellable.</p>
+<p><b>Standing orders.</b> A standing order continues until you ask us to change or stop it.</p>
+<h3 style="margin-top:20px">Privacy Notice</h3>
+<p><b>What we collect.</b> Only what you send us when ordering: your name, phone number, delivery location and what you want to buy.</p>
+<p><b>How we use it.</b> To confirm, prepare and deliver your order and to contact you about it. We do not sell your information.</p>
+<p><b>Where it goes.</b> This website has no database. Your order goes directly to our WhatsApp, so WhatsApp's own privacy terms also apply.</p>
+<p><b>Third parties.</b> The site loads Google Maps and Google Fonts, which may collect technical data such as your IP address.</p>
+<p><b>Your rights.</b> Under the Data Protection and Privacy Act, 2019, you may ask to see, correct or delete the information we hold about you. Message us on WhatsApp at <span data-phone></span>.</p>
+<p id="pdpoLine"></p>
+</div>
+</div>
+</div>
+
+<!-- STATIONS -->
+<div id="stations" class="page">
+<h2 style="font-size:40px;color:var(--emerald);text-align:center">Our 9 Stations</h2>
+<p style="text-align:center;color:#64748b;margin:10px 0 20px">Kitoro is our headquarters, central, near the market and opposite the mosque.</p>
+<div class="stations" id="stationList"></div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="page">
+<div style="background:linear-gradient(135deg,var(--emerald),#0a5c36);color:#fff;padding:26px;border-radius:24px;margin-bottom:20px">
+<h2 style="font-size:36px;color:#fff">Contacts &amp; Orders</h2>
+<p style="color:#a7f3d0;margin-top:10px">Order by WhatsApp, pay with MTN MoMo, Airtel Money or cash on delivery. HQ is at Kitoro, opposite Kitoro Mosque.</p>
+</div>
+<div class="grid2">
+<div>
+<div style="background:#fff;padding:18px;border-radius:16px;border:3px solid #ffcb05"><b>MTN MoMo: <span data-phone></span></b><br><button class="btn btn-mtn" style="width:100%;margin-top:8px" onclick="openPayment()">PAY MoMo NOW</button></div>
+<div style="background:#fff;padding:18px;border-radius:16px;border:2px solid #e2e8f0;margin-top:12px">
+<h3 style="color:var(--emerald);margin-bottom:12px">Make Order</h3>
+<input id="cname" class="field" placeholder="Your Name" autocomplete="name">
+<input id="cphone" class="field" placeholder="Your Phone - e.g 07XXXXXXXX" type="tel" autocomplete="tel">
+<input id="cloc" class="field" placeholder="Location - e.g Kitoro" autocomplete="street-address">
+<h3 style="font-size:17px;color:var(--emerald);margin:6px 0">Your items</h3>
+<div id="cartBox"></div>
+<div style="display:grid;grid-template-columns:1fr 70px;gap:8px;margin-top:8px"><select id="cproduct" class="field" style="margin:0"></select><input id="cqty" class="field" type="number" min="1" value="1" style="margin:0" aria-label="Quantity"></div>
+<button class="btn btn-primary" style="width:100%;justify-content:center;margin:8px 0 14px" onclick="addFromForm()"><i class="fa-solid fa-plus"></i> ADD ANOTHER ITEM</button>
+<select id="cpayment" class="field" style="margin-bottom:12px"><option>Pay on Delivery - Cash</option><option>MTN MoMo</option><option>Airtel Money</option></select>
+<p style="margin-bottom:10px"><small>By sending, you agree to our <a href="#legal" onclick="showPage('legal');return false">Terms &amp; Privacy</a>.</small></p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><button class="btn btn-order" style="justify-content:center;padding:14px" onclick="sendOrder()">SEND ORDER</button><button class="btn btn-mtn" style="justify-content:center;padding:14px" onclick="openPayment()">PAY MoMo</button></div>
+</div>
+</div>
+<div>
+<div class="momo-box"><b>How to Pay MoMo</b><br><small>1. MTN: dial *165# → Send Money → <span data-phone></span><br>2. Airtel: dial *185# → Send Money<br>3. Enter amount and confirm PIN<br>4. Send the screenshot on WhatsApp</small></div>
+<div style="background:#fff;padding:16px;border-radius:16px;border:2px solid #e2e8f0;margin-top:12px"><b>🏆 Kitoro HQ Address</b><br><small>Kitoro, Entebbe, near Kitoro Market, opposite Kitoro Mosque, Entebbe Road<br><span data-open></span><br>MTN MoMo: <span data-phone></span><br>WhatsApp: <span data-phone></span></small><div class="social" id="contactSocial" style="display:none"></div></div>
+</div>
+</div>
+<h3 style="font-size:26px;color:var(--emerald);margin:24px 0 16px;text-align:center">Find a Station</h3>
+<div class="stations" id="contactStations"></div>
+</div>
+
+<footer>
+<div class="footer-grid">
+<div><div style="display:flex;align-items:center;gap:8px"><div class="logo-amazing" style="width:40px;height:40px"><i class="fa-solid fa-crow" style="font-size:16px"></i></div><b>HALAL CHICKEN KITORO HQ</b></div><p style="color:#a7f3d0;margin-top:8px;font-size:12px">Halal chicken, eggs and chicks for Entebbe and Kampala. Order on WhatsApp, pay with MoMo.</p><div class="social" id="footSocial" style="display:none"></div><p style="margin-top:10px;font-size:12px"><a href="#legal" onclick="showPage('legal');return false">Terms &amp; Privacy</a> • <a href="#delivery" onclick="showPage('delivery');return false">Delivery &amp; FAQ</a></p></div>
+<div><b>Prices</b><br><br><small style="color:#a7f3d0;line-height:2" id="footPrices"></small></div>
+<div><b>Pay</b><br><br><small style="color:#a7f3d0;line-height:2"><span style="background:#ffcb05;color:#000;padding:2px 6px;border-radius:4px;font-weight:800">MTN MoMo</span> <span data-phone></span><br>Airtel Money<br>Cash on Delivery<br>WhatsApp: <span data-phone></span></small></div>
+<div><b>Order</b><br><br><button class="btn btn-order" onclick="showPage('contact')">MAKE ORDER NOW</button><br><br><button class="btn btn-mtn" onclick="openPayment()">PAY MoMo</button></div>
+</div>
+<div style="margin-top:20px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.1);text-align:center"><small style="color:#6ee7b7">© <span id="yr"></span> Halal Chicken Kitoro HQ. All rights reserved.</small></div>
+</footer>
+
+<script src="config.js"></script>
+<script src="i18n.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
